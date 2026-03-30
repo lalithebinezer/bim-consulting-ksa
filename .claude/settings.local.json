@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__76323a02-6174-40cd-b72e-70719f85a4c2__display_pdf",
+      "Bash(python -c \"from pypdf import PdfReader; r = PdfReader\\(r''C:\\\\Users\\\\EbinezerL\\\\Documents\\\\GBS-SA_C.pdf''\\); print\\(f''Pages: {len\\(r.pages\\)}''\\); [print\\(f''--- PAGE {i+1} ---\\\\n{p.extract_text\\(\\)}''\\) for i, p in enumerate\\(r.pages[:15]\\)]\")",
+      "Bash(python -c \"import pdfplumber; pdf = pdfplumber.open\\(r''C:\\\\Users\\\\EbinezerL\\\\Documents\\\\GBS-SA_C.pdf''\\); print\\(len\\(pdf.pages\\)\\)\")",
+      "Bash(python -c \":*)",
+      "Bash(pip install:*)",
+      "Bash(python3 \"C:/Users/EbinezerL/.claude/skills/ui-ux-pro-max/scripts/search.py\" \"corporate professional consulting BIM services\" --design-system -p \"BIM Consulting KSA\")",
+      "Bash(python \"C:/Users/EbinezerL/.claude/skills/ui-ux-pro-max/scripts/search.py\" \"corporate professional consulting BIM services\" --design-system -p \"BIM Consulting KSA\")"
+    ]
+  }
+}
