@@ -39,7 +39,7 @@ export default function LeadMagnet() {
           transition={{ duration: 0.5 }}
           className="font-mono text-xs text-[#F97316] tracking-widest uppercase block mb-4"
         >
-          // Premium Content — Free Download
+          {/* Premium Content — Free Download */}
         </motion.span>
 
         <div className="grid lg:grid-cols-2 gap-12 mb-20">
@@ -148,7 +148,7 @@ export default function LeadMagnet() {
 
             {/* Upcoming Content Stream */}
             <div className="bg-white dark:bg-[#0E0E10] border border-slate-200 dark:border-white/6 rounded-2xl p-6">
-              <h4 className="font-mono text-xs text-[#F97316] tracking-widest uppercase mb-4">// Upcoming Content Stream</h4>
+              <h4 className="font-mono text-xs text-[#F97316] tracking-widest uppercase mb-4">{/* Upcoming Content Stream */}</h4>
               <div className="grid grid-cols-2 gap-3">
                 {CONTENT_STREAM.map((item) => (
                   <div key={item.title} className="bg-slate-50 dark:bg-[#111] border border-slate-200 dark:border-white/5 rounded-xl p-3 hover:border-slate-300 dark:hover:border-white/15 transition-colors cursor-default">

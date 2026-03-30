@@ -1,4 +1,5 @@
 "use client";
+/* global window */
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -22,9 +23,11 @@ export default function Navbar() {
 
   useEffect(() => {
     setMounted(true);
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    if (typeof globalThis.window !== "undefined") {
+      const onScroll = () => setScrolled(globalThis.window.scrollY > 40);
+      globalThis.window.addEventListener("scroll", onScroll);
+      return () => globalThis.window.removeEventListener("scroll", onScroll);
+    }
   }, []);
 
   return (

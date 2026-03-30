@@ -66,7 +66,7 @@ export default function WhyUs() {
               transition={{ duration: 0.5 }}
               className="mono text-xs text-[#F97316] tracking-widest uppercase block mb-4"
             >
-              {"// 03 — Why Choose Us"}
+              {/* 03 — Why Choose Us */}
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 30 }}

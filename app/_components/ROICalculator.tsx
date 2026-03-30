@@ -61,7 +61,7 @@ export default function ROICalculator() {
           transition={{ duration: 0.5 }}
           className="font-mono text-xs text-[#F97316] tracking-widest uppercase block mb-4"
         >
-          // Free Tool — Instant Results
+          {/* Free Tool — Instant Results */}
         </motion.span>
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">

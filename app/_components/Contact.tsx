@@ -42,7 +42,7 @@ export default function Contact() {
           transition={{ duration: 0.5 }}
           className="mono text-xs text-[#F97316] tracking-widest uppercase block mb-4"
         >
-          {"// 05 — Get In Touch"}
+          {/* 05 — Get In Touch */}
         </motion.span>
 
         <div className="grid lg:grid-cols-2 gap-16">

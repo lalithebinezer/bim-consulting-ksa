@@ -186,7 +186,7 @@ export default function Services() {
             transition={{ duration: 0.5 }}
             className="font-mono text-xs text-[#F97316] tracking-widest uppercase block mb-4"
           >
-            {"// 01 — What We Do"}
+            {/* 01 — What We Do */}
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 30 }}

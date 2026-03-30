@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { MapPin, Calendar, ArrowUpRight } from "lucide-react";
+import { MapPin, Calendar } from "lucide-react";
 
 const PROJECTS = [
   {
@@ -97,7 +97,7 @@ export default function Projects() {
             transition={{ duration: 0.5 }}
             className="mono text-xs text-[#F97316] tracking-widest uppercase block mb-4"
           >
-            {"// 02 — Featured Work"}
+            {/* 02 — Featured Work */}
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
