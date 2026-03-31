@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
+import { asset } from "@/lib/utils";
 
 const links = [
   { label: "Services", href: "#services" },
@@ -65,7 +66,7 @@ export default function Navbar() {
               whileHover={{ scale: 1.05 }}
             >
               <img 
-                src="/gbs-logo.png" 
+                src={asset("/gbs-logo.png")} 
                 alt="GBS Logo" 
                 className="w-11 h-11 object-contain brightness-125 contrast-125 rounded-full"
               />

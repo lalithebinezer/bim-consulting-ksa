@@ -4,11 +4,12 @@ import { useRef, useMemo } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls, Float, Stars, PerspectiveCamera } from "@react-three/drei";
 import * as THREE from "three";
+import { asset } from "@/lib/utils";
 
 /* ─── 3D GBS Logo Disk ────────────────────────────────────── */
 function GBSLogoDisk() {
   const meshRef = useRef<THREE.Mesh>(null!);
-  const texture = useLoader(THREE.TextureLoader, "/gbs-logo.png");
+  const texture = useLoader(THREE.TextureLoader, asset("/gbs-logo.png"));
 
   useFrame((state, delta) => {
     meshRef.current.rotation.y += delta * 0.4;

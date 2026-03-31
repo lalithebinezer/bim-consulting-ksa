@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react"
 import { MeshGradient, PulsingBorder } from "@paper-design/shaders-react"
 import { motion } from "framer-motion"
 import { Calculator, ArrowRight, ShieldCheck, Award } from "lucide-react"
+import { asset } from "@/lib/utils"
 
 const STATS = [
   { label: "PROJECTS DELIVERED", value: "200+" },
@@ -106,7 +107,7 @@ export default function HeroShader() {
             <div className="flex items-center gap-3">
                 <div className="flex items-center gap-2 group/autodesk transition-all">
                   <div className="h-6 w-auto flex items-center">
-                    <img src="/autodesk-logo.png" alt="Autodesk Logo" className="h-full invert filter brightness-200 contrast-150" />
+                    <img src={asset("/autodesk-logo.png")} alt="Autodesk Logo" className="h-full invert filter brightness-200 contrast-150" />
                   </div>
                   <span className="text-[11px] font-black text-white/60 group-hover/autodesk:text-[#00ADEF] tracking-widest transition-colors duration-300 uppercase">AUTODESK PARTNER</span>
                 </div>

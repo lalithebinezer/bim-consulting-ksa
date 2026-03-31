@@ -1,4 +1,5 @@
 "use client";
+import { asset } from "@/lib/utils";
 
 
 
@@ -32,7 +33,7 @@ export default function Footer() {
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center p-1.5">
                   <img 
-                    src="/gbs-logo.png" 
+                    src={asset("/gbs-logo.png")} 
                     alt="GBS Logo" 
                     className="w-full h-full object-contain brightness-110"
                   />
@@ -48,7 +49,7 @@ export default function Footer() {
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1.5 bg-white/10 rounded px-3 py-2 border border-white/10">
                 <img 
-                  src="/autodesk-logo.png" 
+                  src={asset("/autodesk-logo.png")} 
                   alt="Autodesk Partner" 
                   className="h-3 w-auto invert filter brightness-200 contrast-150" 
                 />

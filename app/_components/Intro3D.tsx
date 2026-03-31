@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
+import { asset } from "@/lib/utils";
 
 const Scene3D = dynamic(() => import("./Scene3D"), { ssr: false });
 
@@ -94,7 +95,7 @@ export default function Intro3D({ onComplete }: { onComplete: () => void }) {
               className="flex items-center gap-3"
             >
               <div className="w-8 h-8 rounded-full overflow-hidden border border-[#00ADEF]/30 bg-black flex items-center justify-center">
-                <img src="/gbs-logo.png" alt="GBS" className="w-6 h-6 object-contain" />
+                <img src={asset("/gbs-logo.png")} alt="GBS" className="w-6 h-6 object-contain" />
               </div>
               <span className="font-mono text-xs text-[#00ADEF] tracking-widest uppercase">
                 GBS — Future Built
