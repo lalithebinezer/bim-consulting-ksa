@@ -25,11 +25,41 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Gulf Business Solutions (GBS) | BIM Consulting | Your Digital Innovation Partner",
+  title: "Gulf Business Solutions (GBS) | BIM Consulting | KSA AEC Innovation",
   description:
-    "Gulf Business Solutions (GBS) — the KSA entity of CNS — is an ISO 9001:2015, ISO/IEC 20000-1:2018 & ISO/IEC 27001:2022 certified BIM consulting firm. Delivering lifecycle BIM solutions for AEC projects across Saudi Arabia, GCC and beyond.",
+    "Gulf Business Solutions (GBS) — ISO certified BIM consulting firm. Delivering lifecycle BIM, digital twins, and strategic AEC solutions across Saudi Arabia and the GCC.",
   keywords:
-    "BIM consulting, Autodesk Silver Partner, Gulf Business Solutions, GBS, CNS, Saudi Arabia, KSA, Building Information Modeling, Revit, Navisworks, Civil 3D, Engineering on Demand, CAD BIM services, WorkEngin workstations",
+    "BIM consulting KSA, Saudi Arabia BIM, Digital Twin Saudi, Autodesk Silver Partner KSA, Revit services Riyadh, BIM ROI calculator, Clash detection services",
+  authors: [{ name: "GBS Technical Team" }],
+  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
+  alternates: {
+    canonical: "https://gulfbusinesssolutions.com",
+  },
+  openGraph: {
+    title: "GBS | Building the Future with BIM",
+    description: "ISO certified BIM consulting and lifecycle solutions for Saudi Arabia's AEC sector.",
+    url: "https://gulfbusinesssolutions.com",
+    siteName: "Gulf Business Solutions",
+    locale: "en_SA",
+    type: "website",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Gulf Business Solutions (GBS)",
+  "url": "https://gulfbusinesssolutions.com",
+  "logo": "https://gulfbusinesssolutions.com/logo.png",
+  "description": "ISO certified BIM consulting firm specializing in AEC digital transformation in Saudi Arabia.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "SA"
+  },
+  "certification": [
+    "ISO 9001:2015",
+    "ISO/IEC 27001:2022"
+  ]
 };
 
 export default function RootLayout({
@@ -46,6 +76,10 @@ export default function RootLayout({
         className="min-h-full"
         style={{ fontFamily: "var(--font-body), sans-serif" }}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

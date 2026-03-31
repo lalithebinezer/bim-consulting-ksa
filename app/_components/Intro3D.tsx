@@ -76,7 +76,7 @@ export default function Intro3D({ onComplete }: { onComplete: () => void }) {
               initial={{ opacity: 0, scale: 0.6 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1 + i * 0.05 }}
-              className={`absolute w-8 h-8 border-[#F97316]/60 ${cls}`}
+              className={`absolute w-8 h-8 border-[#00ADEF]/60 ${cls}`}
             />
           ))}
 
@@ -93,11 +93,11 @@ export default function Intro3D({ onComplete }: { onComplete: () => void }) {
               transition={{ delay: 0.2 }}
               className="flex items-center gap-3"
             >
-              <div className="w-8 h-8 bg-[#F97316] rounded-md flex items-center justify-center font-bold text-black text-xs font-heading">
-                GBS
+              <div className="w-8 h-8 rounded-full overflow-hidden border border-[#00ADEF]/30 bg-black flex items-center justify-center">
+                <img src="/gbs-logo.png" alt="GBS" className="w-6 h-6 object-contain" />
               </div>
-              <span className="font-mono text-xs text-[#F97316] tracking-widest uppercase">
-                GBS — System Boot
+              <span className="font-mono text-xs text-[#00ADEF] tracking-widest uppercase">
+                GBS — Future Built
               </span>
             </motion.div>
             <motion.span
@@ -113,22 +113,22 @@ export default function Intro3D({ onComplete }: { onComplete: () => void }) {
           {/* Centre overlay: company name */}
           <div className="relative z-20 flex-1 flex flex-col items-center justify-center pointer-events-none">
             <motion.div
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
               className="text-center"
             >
-              <div className="font-mono text-[10px] text-[#F97316] tracking-[0.3em] uppercase mb-4">
-                Autodesk Partner · KSA
+              <div className="font-mono text-[10px] text-[#00ADEF] tracking-[0.5em] uppercase mb-4 opacity-70">
+                AEC Innovation · Since 1995
               </div>
               <h1
-                className="text-[clamp(3rem,8vw,7rem)] font-bold tracking-tighter leading-none text-white"
+                className="text-[clamp(2.5rem,6vw,4rem)] font-black tracking-tighter leading-tight text-white mb-2"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
-                Gulf business solution <span className="text-gradient">(GBS)</span>
+                GULF BUSINESS SOLUTIONS
               </h1>
-              <div className="font-mono text-xs text-[#64748B] mt-3 tracking-widest uppercase">
-                Building Information Modeling
+              <div className="font-mono text-xs text-[#00ADEF]/60 mt-1 tracking-[0.8em] uppercase">
+                Future Built
               </div>
             </motion.div>
           </div>
@@ -154,17 +154,17 @@ export default function Intro3D({ onComplete }: { onComplete: () => void }) {
             {/* Progress bar */}
             <div className="w-full h-[2px] bg-[#1a1a1a] rounded-full overflow-hidden">
               <motion.div
-                className="h-full bg-[#F97316] rounded-full"
+                className="h-full bg-gradient-to-r from-[#00ADEF] via-[#1282C4] to-[#4A69BD] rounded-full"
                 style={{ width: `${progress}%` }}
               />
             </div>
 
             {/* Bottom row */}
             <div className="flex items-center justify-between">
-              <span className="font-mono text-[10px] text-[#1e3a5f]">
+              <span className="font-mono text-[10px] text-[#2c4e7d]">
                 RIYADH · JEDDAH · KSA
               </span>
-              <span className="font-mono text-[10px] text-[#F97316]">
+              <span className="font-mono text-[10px] text-[#00ADEF]">
                 {Math.min(100, Math.round(progress))}%
               </span>
             </div>

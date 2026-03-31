@@ -11,162 +11,148 @@ const SERVICES = [
     description: "Precision 3D BIM models for architectural, structural and MEP disciplines. We deliver LOD 100–500 models from IFC drawings through to shop drawings and as-built documentation.",
     tags: ["Revit", "LOD 100–500", "Multidiscipline"],
     highlight: true,
-    color: "#F97316",
+    color: "#00ADEF",
   },
   {
     icon: GitMerge,
     title: "Clash Detection & Constructability Analysis",
     description: "Multi-discipline coordination and clash detection that goes beyond listing clashes — we solve them according to consultant-defined principles and raise formal RFIs.",
     tags: ["Navisworks", "BIM 360", "RFI Management"],
-    color: "#3B82F6",
+    color: "#1282C4",
   },
   {
     icon: Shield,
     title: "Construction Management (4D & 5D Simulation)",
     description: "4D time-linked and 5D cost-integrated BIM simulations using MS Project and Navisworks for pre-bid submissions, baseline scheduling and weekly progress reporting.",
     tags: ["4D Simulation", "5D Costing", "MS Project"],
-    color: "#8B5CF6",
+    color: "#4A69BD",
   },
   {
     icon: Cpu,
     title: "Visualization & Virtual Reality Solutions",
     description: "Rendered walkthroughs, VR presentations and construction methodology showcases that communicate design intent and logistics planning to clients and stakeholders.",
     tags: ["Virtual Reality", "Walkthrough", "Logistics"],
-    color: "#10B981",
+    color: "#00ADEF",
   },
   {
     icon: Ruler,
     title: "Cost & Quantity Estimation through BIM",
     description: "Model-based quantity take-offs and monthly quantity sheets generated directly from the BIM model, enabling accurate valuations of civil and MEP components.",
     tags: ["QTO", "Cost Estimation", "Dynamo"],
-    color: "#F59E0B",
+    color: "#1282C4",
   },
   {
     icon: Users,
     title: "As-Built BIM Modelling via Laser Scanning",
     description: "Scan-to-BIM services using laser scanning point clouds to produce accurate as-built models for heritage buildings, renovations and facility management handover.",
     tags: ["Laser Scanning", "Scan-to-BIM", "Facility Mgmt"],
-    color: "#EC4899",
+    color: "#4A69BD",
   },
   {
     icon: HardHat,
     title: "Onsite CAD/BIM Services",
     description: "Dedicated onsite detailers and site engineers embedded in your project team — Architectural, Structural, MEP, Infrastructure, Oil & Gas (P&ID/PDS/PDMS), Landscape, Joinery and Steel Detailers.",
     tags: ["Onsite", "Oil & Gas", "Steel Detailing", "MEP"],
-    color: "#06B6D4",
+    color: "#00ADEF",
   },
   {
     icon: Wrench,
     title: "Turnkey CAD/BIM",
     description: "End-to-end CAD/BIM delivery for Architectural, Structural, Mechanical, Electrical, Fitout & Interior Design, Joinery, and Infrastructural (Dry & Wet Utilities) disciplines.",
     tags: ["Turnkey", "Fitout", "Infrastructure", "Utilities"],
-    color: "#84CC16",
+    color: "#1282C4",
   },
   {
     icon: Monitor,
     title: "WorkEngin Workstations",
     description: "Custom-built engineering workstations designed for CAD, BIM/Revit, Visualization and Server/Render workloads. Tower, HPC, Laptop and Cloud options with leasing, 3-year warranty and quarterly preventive maintenance.",
     tags: ["CAD Stations", "BIM/Revit", "HPC", "Leasing"],
-    color: "#A78BFA",
+    color: "#4A69BD",
   },
 ];
 
-function TiltCard({ service, index }: { service: typeof SERVICES[0]; index: number }) {
+import { GlowCard } from "@/components/ui/spotlight-card";
+
+export function ServiceCard({ service, i }: { service: typeof SERVICES[0]; i: number }) {
   const Icon = service.icon;
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const [hovered, setHovered] = useState(false);
+  const inViewRef = useRef(null);
+  const isInView = useInView(inViewRef, { once: true, margin: "-60px" });
 
-  function onMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-    const rect = cardRef.current!.getBoundingClientRect();
-    const cx = e.clientX - rect.left - rect.width / 2;
-    const cy = e.clientY - rect.top - rect.height / 2;
-    setTilt({ x: (cy / rect.height) * -10, y: (cx / rect.width) * 10 });
-  }
-
-  function onMouseLeave() {
-    setTilt({ x: 0, y: 0 });
-    setHovered(false);
-  }
+  // Map hex colors to GlowCard theme colors
+  const getGlowColor = (hex: string): 'blue' | 'purple' | 'green' | 'red' | 'orange' => {
+    const h = hex.toLowerCase();
+    if (h === "#f97316" || h === "#f59e0b") return "blue";
+    if (h === "#3b82f6" || h === "#06b6d4") return "blue";
+    if (h === "#8b5cf6" || h === "#a78bfa") return "purple";
+    if (h === "#10b981" || h === "#84cc16") return "green";
+    if (h === "#ec4899") return "red";
+    return "blue";
+  };
 
   return (
     <motion.div
-      ref={cardRef}
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.65, delay: index * 0.09, ease: [0.16, 1, 0.3, 1] }}
-      onMouseMove={onMouseMove}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={onMouseLeave}
-      style={{
-        transform: `perspective(800px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
-        transition: hovered ? "transform 0.1s ease" : "transform 0.4s ease",
-      }}
-      className={`relative group p-7 rounded-2xl border overflow-hidden cursor-default ${
-        service.highlight
-          ? "bg-orange-50 dark:bg-[#F97316]/8 border-orange-200 dark:border-[#F97316]/25"
-          : "bg-white dark:bg-[#0E0E10] border-slate-200 dark:border-white/6"
-      }`}
+      ref={inViewRef}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: i * 0.1 }}
+      className="h-full"
     >
-      {/* Inner glow on hover */}
-      <motion.div
-        animate={{ opacity: hovered ? 1 : 0 }}
-        transition={{ duration: 0.2 }}
-        className="absolute inset-0 pointer-events-none rounded-2xl"
-        style={{ boxShadow: `inset 0 0 40px ${service.color}20` }}
-      />
-
-      {/* Top accent line */}
-      <motion.div
-        animate={{ scaleX: hovered ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-        className="absolute top-0 left-0 right-0 h-[2px] origin-left rounded-t-2xl"
-        style={{ background: service.color }}
-      />
-
-      {/* Icon */}
-      <div
-        className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110"
-        style={{
-          background: `${service.color}18`,
-          border: `1px solid ${service.color}30`,
-          color: service.color,
-        }}
+      <GlowCard 
+        glowColor={getGlowColor(service.color)}
+        customSize
+        className={`h-full p-7 border overflow-hidden cursor-default transition-all duration-500 border-white/10 bg-white/5 backdrop-blur-2xl`}
       >
-        <Icon size={22} strokeWidth={1.8} />
-      </div>
+        <div className="relative z-10 h-full flex flex-col">
+          {/* Top accent line */}
+          <div 
+            className="absolute -top-7 -left-7 -right-7 h-[2px]" 
+            style={{ background: `linear-gradient(to right, ${service.color}, transparent)` }} 
+          />
 
-      {service.highlight && (
-        <span
-          className="absolute top-4 right-4 font-mono text-[9px] px-2 py-1 rounded-full tracking-widest uppercase border"
-          style={{ color: service.color, borderColor: `${service.color}40`, background: `${service.color}15` }}
-        >
-          Core
-        </span>
-      )}
-
-      <h3
-        className="text-xl font-bold mb-3 text-[#0F172A] dark:text-white tracking-tight"
-        style={{ fontFamily: "var(--font-heading)" }}
-      >
-        {service.title}
-      </h3>
-      <p className="text-slate-500 dark:text-[#64748B] text-sm leading-relaxed mb-6">{service.description}</p>
-
-      <div className="flex flex-wrap gap-2">
-        {service.tags.map((tag) => (
-          <span
-            key={tag}
-            className="font-mono text-[10px] tracking-wider text-slate-500 dark:text-[#64748B] border border-slate-200 dark:border-white/8 px-2.5 py-1 rounded-md bg-slate-50 dark:bg-white/[0.02]"
+          {/* Icon */}
+          <div
+            className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 border transition-transform duration-500 hover:scale-110"
+            style={{
+              background: `${service.color}15`,
+              borderColor: `${service.color}30`,
+              color: service.color,
+            }}
           >
-            {tag}
-          </span>
-        ))}
-      </div>
+            <Icon size={22} strokeWidth={1.8} />
+          </div>
+
+          {service.highlight && (
+            <span
+              className="absolute top-0 right-0 font-mono text-[9px] px-2 py-1 rounded-full tracking-widest uppercase border"
+              style={{ color: service.color, borderColor: `${service.color}40`, background: `${service.color}15` }}
+            >
+              Core
+            </span>
+          )}
+
+          <h3 className="text-xl font-bold mb-3 text-white tracking-tight leading-tight">
+            {service.title}
+          </h3>
+          <p className="text-slate-200 text-[13px] leading-relaxed mb-8 min-h-[80px] opacity-90">
+            {service.description}
+          </p>
+
+          <div className="flex flex-wrap gap-2 mt-auto">
+            {service.tags.map((tag) => (
+              <span
+                key={tag}
+                className="font-mono text-[9px] tracking-widest text-[#00ADEF] border border-[#00ADEF]/30 px-2 py-0.5 rounded-sm bg-[#00ADEF]/10 uppercase"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </GlowCard>
     </motion.div>
   );
 }
+
 
 export default function Services() {
   const ref = useRef(null);
@@ -175,7 +161,7 @@ export default function Services() {
   return (
     <section id="services" className="py-32 relative">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 left-1/4 w-[700px] h-[400px] bg-[#F97316]/4 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-1/4 w-[700px] h-[400px] bg-[#00ADEF]/4 rounded-full blur-[120px]" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6">
@@ -184,7 +170,7 @@ export default function Services() {
             initial={{ opacity: 0, x: -20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="font-mono text-xs text-[#F97316] tracking-widest uppercase block mb-4"
+            className="font-mono text-xs text-[#00ADEF] tracking-widest uppercase block mb-4"
           >
             {/* 01 — What We Do */}
           </motion.span>
@@ -192,7 +178,7 @@ export default function Services() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-[clamp(2.5rem,6vw,6rem)] font-bold tracking-tighter leading-none text-[#0F172A] dark:text-white mb-6"
+            className="text-[clamp(2.5rem,6vw,6rem)] font-bold tracking-tighter leading-none text-white mb-6"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             OUR <span className="text-gradient">SERVICES</span>
@@ -201,7 +187,7 @@ export default function Services() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-xl text-slate-500 dark:text-[#64748B] text-lg leading-relaxed"
+            className="max-w-xl text-slate-200 text-lg leading-relaxed"
           >
             End-to-end BIM solutions for Hospitality, Mixed-Use, Industrial and Infrastructure projects across the GCC and beyond — from schematic design to facility management handover.
           </motion.p>
@@ -209,7 +195,7 @@ export default function Services() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {SERVICES.map((service, i) => (
-            <TiltCard key={service.title} service={service} index={i} />
+            <ServiceCard key={service.title} service={service} i={i} />
           ))}
         </div>
       </div>

@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Award, Zap, HeadphonesIcon, TrendingUp, Lock, Users } from "lucide-react";
+import { GlowCard } from "@/components/ui/spotlight-card";
 
 const REASONS = [
   {
@@ -53,7 +54,7 @@ export default function WhyUs() {
       <div className="absolute top-0 left-6 right-6 max-w-7xl mx-auto h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#F97316]/5 rounded-full blur-[120px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#00ADEF]/5 rounded-full blur-[120px]" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6">
@@ -64,7 +65,7 @@ export default function WhyUs() {
               initial={{ opacity: 0, x: -20 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.5 }}
-              className="mono text-xs text-[#F97316] tracking-widest uppercase block mb-4"
+              className="mono text-xs text-[#00ADEF] tracking-widest uppercase block mb-4"
             >
               {/* 03 — Why Choose Us */}
             </motion.span>
@@ -72,18 +73,17 @@ export default function WhyUs() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-[clamp(2.5rem,5vw,5rem)] font-black tracking-tighter leading-none text-[#0F172A] dark:text-white mb-8"
-             
+              className="text-[clamp(2.5rem,5vw,5rem)] font-black tracking-tighter leading-none text-white mb-8"
             >
               THE GBS
               <br />
-              <span className="text-gradient">ADVANTAGE</span>
+              <span className="bg-gradient-to-r from-[#00ADEF] via-[#A5F3FC] to-white bg-clip-text text-transparent">ADVANTAGE</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ delay: 0.3 }}
-              className="text-slate-500 dark:text-[#64748B] text-lg leading-relaxed mb-10"
+              className="text-slate-300 text-lg leading-relaxed mb-10"
             >
               We extend BIM beyond clash detection into engineered visualization,
               quantity estimation and virtual project management — making us a single source of truth for every stakeholder.
@@ -94,12 +94,12 @@ export default function WhyUs() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4 }}
-              className="inline-block bg-[#F97316]/10 border border-[#F97316]/25 rounded-2xl px-8 py-6"
+              className="inline-block bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl px-8 py-6"
             >
-              <div className="text-6xl font-black text-[#F97316] mb-1">
+              <div className="text-6xl font-black text-[#00ADEF] mb-1">
                 200+
               </div>
-              <div className="text-sm text-slate-500 dark:text-[#64748B] font-medium">Projects successfully delivered<br />across the GCC &amp; globe</div>
+              <div className="text-sm text-slate-100 font-medium">Projects successfully delivered<br />across the GCC &amp; globe</div>
             </motion.div>
           </div>
 
@@ -114,19 +114,28 @@ export default function WhyUs() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, delay: i * 0.07 }}
-                  className="group bg-white dark:bg-[#111111] hover:bg-slate-50 dark:hover:bg-[#161616] border border-slate-200 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/12 rounded-xl p-6 transition-all duration-300 cursor-default"
+                  className="h-full"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-[#1A1A1A] flex items-center justify-center text-[#F97316] mb-4 group-hover:bg-orange-50 dark:group-hover:bg-[#F97316]/15 group-hover:scale-110 transition-all duration-300">
-                    <Icon size={18} strokeWidth={1.8} />
-                  </div>
-                  <h3 className="text-base font-bold text-[#0F172A] dark:text-white mb-2 tracking-tight">
-                    {reason.title}
-                  </h3>
-                  <p className="text-slate-500 dark:text-[#64748B] text-xs leading-relaxed">{reason.description}</p>
+                  <GlowCard 
+                    glowColor="blue" 
+                    customSize 
+                    className="h-full group bg-white/5 backdrop-blur-2xl border border-white/10 p-6 transition-all duration-300 cursor-default"
+                  >
+                    <div className="relative z-10">
+                      <div className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-[#1A1A1A] flex items-center justify-center text-[#00ADEF] mb-4 group-hover:bg-[#00ADEF]/5 dark:group-hover:bg-[#00ADEF]/15 group-hover:scale-110 transition-all duration-300">
+                        <Icon size={18} strokeWidth={1.8} />
+                      </div>
+                      <h3 className="text-base font-bold text-white mb-2 tracking-tight">
+                        {reason.title}
+                      </h3>
+                      <p className="text-slate-200 text-xs leading-relaxed opacity-90">{reason.description}</p>
+                    </div>
+                  </GlowCard>
                 </motion.div>
               );
             })}
           </div>
+
         </div>
       </div>
     </section>

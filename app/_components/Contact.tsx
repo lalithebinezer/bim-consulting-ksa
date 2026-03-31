@@ -32,7 +32,7 @@ export default function Contact() {
       <div className="absolute top-0 left-6 right-6 max-w-7xl mx-auto h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#F97316]/6 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#00ADEF]/6 rounded-full blur-[120px]" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6" ref={ref}>
@@ -40,7 +40,7 @@ export default function Contact() {
           initial={{ opacity: 0, x: -20 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="mono text-xs text-[#F97316] tracking-widest uppercase block mb-4"
+          className="mono text-xs text-[#00ADEF] tracking-widest uppercase block mb-4"
         >
           {/* 05 — Get In Touch */}
         </motion.span>
@@ -52,7 +52,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-[clamp(2.5rem,5vw,5.5rem)] font-black tracking-tighter leading-none text-[#0F172A] dark:text-white mb-6"
+              className="text-[clamp(2.5rem,5vw,5.5rem)] font-black tracking-tighter leading-none text-white mb-6"
              
             >
               LET&apos;S BUILD
@@ -64,7 +64,7 @@ export default function Contact() {
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ delay: 0.3 }}
-              className="text-slate-500 dark:text-[#64748B] text-lg leading-relaxed mb-10 max-w-md"
+              className="max-w-xl text-slate-100 text-lg leading-relaxed mb-12 opacity-90"
             >
               Get a free BIM consultation and project assessment. Whether you&apos;re a contractor, consultant, or A&E firm looking to scale — our team responds within 24 hours.
             </motion.p>
@@ -78,21 +78,21 @@ export default function Contact() {
             >
               <a
                 href="mailto:info@gbs-saudi.com"
-                className="flex items-center gap-3 text-slate-500 dark:text-[#94A3B8] hover:text-[#F97316] transition-colors duration-200 cursor-pointer group"
+                className="flex items-center gap-3 text-slate-300 hover:text-[#00ADEF] transition-colors duration-200 cursor-pointer group"
               >
-                <div className="w-9 h-9 rounded-lg bg-white dark:bg-[#111] border border-slate-200 dark:border-white/8 flex items-center justify-center group-hover:border-orange-200 dark:group-hover:border-[#F97316]/40 group-hover:bg-[#F97316]/10 transition-all duration-200">
+                <div className="w-9 h-9 rounded-lg bg-white dark:bg-[#111] border border-slate-200 dark:border-white/8 flex items-center justify-center group-hover:border-[#00ADEF]/40 dark:group-hover:border-[#00ADEF]/40 group-hover:bg-[#00ADEF]/10 transition-all duration-200">
                   <Mail size={14} />
                 </div>
-                <span className="text-sm font-medium">info@gbs-saudi.com</span>
+                <span className="text-sm font-medium text-slate-200 group-hover:text-[#00ADEF]">info@gbs-saudi.com</span>
               </a>
               <a
                 href="tel:+971505512006"
-                className="flex items-center gap-3 text-slate-500 dark:text-[#94A3B8] hover:text-[#F97316] transition-colors duration-200 cursor-pointer group"
+                className="flex items-center gap-3 text-slate-300 hover:text-[#00ADEF] transition-colors duration-200 cursor-pointer group"
               >
-                <div className="w-9 h-9 rounded-lg bg-white dark:bg-[#111] border border-slate-200 dark:border-white/8 flex items-center justify-center group-hover:border-orange-200 dark:group-hover:border-[#F97316]/40 group-hover:bg-[#F97316]/10 transition-all duration-200">
+                <div className="w-9 h-9 rounded-lg bg-white dark:bg-[#111] border border-slate-200 dark:border-white/8 flex items-center justify-center group-hover:border-[#00ADEF]/40 dark:group-hover:border-[#00ADEF]/40 group-hover:bg-[#00ADEF]/10 transition-all duration-200">
                   <Phone size={14} />
                 </div>
-                <span className="text-sm font-medium">+971 50 551 2006 (Binil Kumar)</span>
+                <span className="text-sm font-medium text-slate-200 group-hover:text-[#00ADEF]">+971 50 551 2006 (Binil Kumar)</span>
               </a>
             </motion.div>
 
@@ -106,16 +106,16 @@ export default function Contact() {
               {OFFICES.map((office) => (
                 <div
                   key={office.city}
-                  className="bg-slate-50 dark:bg-[#111] border border-slate-200 dark:border-white/5 rounded-xl p-4"
+                  className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-4 hover:border-[#00ADEF]/30 transition-all duration-300"
                 >
                   <div className="flex items-center gap-2 mb-2">
-                    <MapPin size={12} className="text-[#F97316]" />
-                    <span className="font-bold text-sm text-[#0F172A] dark:text-white">
+                    <MapPin size={12} className="text-[#00ADEF]" />
+                    <span className="font-bold text-sm text-white">
                       {office.city}
                     </span>
                   </div>
-                  <p className="text-[10px] text-slate-500 dark:text-[#475569] leading-relaxed mb-1">{office.address}</p>
-                  <p className="text-[10px] text-[#F97316]/70 font-medium">{office.phone}</p>
+                  <p className="text-[10px] text-slate-100 leading-relaxed mb-1 opacity-80">{office.address}</p>
+                  <p className="text-[10px] text-[#00ADEF] font-semibold opacity-90">{office.phone}</p>
                 </div>
               ))}
             </motion.div>
@@ -131,15 +131,15 @@ export default function Contact() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-[#F97316]/10 border border-[#F97316]/30 rounded-2xl p-12 flex flex-col items-center justify-center text-center h-full min-h-[400px]"
+                className="bg-[#00ADEF]/10 border border-[#00ADEF]/30 rounded-2xl p-12 flex flex-col items-center justify-center text-center h-full min-h-[400px]"
               >
-                <div className="w-16 h-16 bg-[#F97316] rounded-full flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-[#00ADEF] rounded-full flex items-center justify-center mb-6">
                   <Send size={24} className="text-black" />
                 </div>
-                <h3 className="text-2xl font-black text-[#0F172A] dark:text-white mb-3">
+                <h3 className="text-2xl font-black text-white mb-3">
                   Message Sent!
                 </h3>
-                <p className="text-slate-500 dark:text-[#94A3B8] text-sm leading-relaxed max-w-sm">
+                <p className="text-slate-300 text-sm leading-relaxed max-w-sm">
                   Our team will reach out within 24 hours to discuss your project
                   requirements and schedule a free consultation.
                 </p>
@@ -147,11 +147,12 @@ export default function Contact() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="bg-white dark:bg-[#0D0D0D] border border-slate-200 dark:border-white/8 rounded-2xl p-8 flex flex-col gap-5"
+                className="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 flex flex-col gap-5 shadow-2xl relative overflow-hidden"
               >
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#00ADEF] via-blue-500 to-[#1282C4] opacity-50" />
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="firstName" className="mono text-[11px] text-slate-500 dark:text-[#64748B] tracking-wider uppercase">
+                    <label htmlFor="firstName" className="mono text-[11px] text-slate-300 tracking-wider uppercase">
                       First Name
                     </label>
                     <input
@@ -160,11 +161,11 @@ export default function Contact() {
                       type="text"
                       required
                       placeholder="Ahmed"
-                      className="bg-slate-50 dark:bg-[#111] border border-slate-200 dark:border-white/8 rounded-xl px-4 py-3 text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-[#333] focus:outline-none focus:border-orange-200 dark:focus:border-[#F97316]/50 transition-colors duration-200"
+                      className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#00ADEF]/50 transition-colors duration-200"
                     />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="lastName" className="mono text-[11px] text-slate-500 dark:text-[#64748B] tracking-wider uppercase">
+                    <label htmlFor="lastName" className="mono text-[11px] text-slate-300 tracking-wider uppercase">
                       Last Name
                     </label>
                     <input
@@ -173,13 +174,13 @@ export default function Contact() {
                       type="text"
                       required
                       placeholder="Al-Rashidi"
-                      className="bg-slate-50 dark:bg-[#111] border border-slate-200 dark:border-white/8 rounded-xl px-4 py-3 text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-[#333] focus:outline-none focus:border-orange-200 dark:focus:border-[#F97316]/50 transition-colors duration-200"
+                      className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#00ADEF]/50 transition-colors duration-200"
                     />
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="email" className="mono text-[11px] text-slate-500 dark:text-[#64748B] tracking-wider uppercase">
+                  <label htmlFor="email" className="mono text-[11px] text-slate-300 tracking-wider uppercase">
                     Email
                   </label>
                   <input
@@ -188,12 +189,12 @@ export default function Contact() {
                     type="email"
                     required
                     placeholder="ahmed@company.com.sa"
-                    className="bg-slate-50 dark:bg-[#111] border border-slate-200 dark:border-white/8 rounded-xl px-4 py-3 text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-[#333] focus:outline-none focus:border-orange-200 dark:focus:border-[#F97316]/50 transition-colors duration-200"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#00ADEF]/50 transition-colors duration-200"
                   />
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="company" className="mono text-[11px] text-slate-500 dark:text-[#64748B] tracking-wider uppercase">
+                  <label htmlFor="company" className="mono text-[11px] text-slate-300 tracking-wider uppercase">
                     Company / Organization
                   </label>
                   <input
@@ -201,18 +202,18 @@ export default function Contact() {
                     name="company"
                     type="text"
                     placeholder="Saudi Contracting Co."
-                    className="bg-slate-50 dark:bg-[#111] border border-slate-200 dark:border-white/8 rounded-xl px-4 py-3 text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-[#333] focus:outline-none focus:border-orange-200 dark:focus:border-[#F97316]/50 transition-colors duration-200"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#00ADEF]/50 transition-colors duration-200"
                   />
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="service" className="mono text-[11px] text-slate-500 dark:text-[#64748B] tracking-wider uppercase">
+                  <label htmlFor="service" className="mono text-[11px] text-slate-300 tracking-wider uppercase">
                     Service Required
                   </label>
                   <select
                     id="service"
                     name="service"
-                    className="bg-slate-50 dark:bg-[#111] border border-slate-200 dark:border-white/8 rounded-xl px-4 py-3 text-sm text-[#0F172A] dark:text-white focus:outline-none focus:border-orange-200 dark:focus:border-[#F97316]/50 transition-colors duration-200 cursor-pointer"
+                    className="bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#00ADEF]/50 transition-colors duration-200 cursor-pointer"
                   >
                     <option value="">Select a service...</option>
                     <option value="bim-modelling">Architectural / Structural / MEP BIM Modelling</option>
@@ -227,7 +228,7 @@ export default function Contact() {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="message" className="mono text-[11px] text-slate-500 dark:text-[#64748B] tracking-wider uppercase">
+                  <label htmlFor="message" className="mono text-[11px] text-slate-300 tracking-wider uppercase">
                     Project Brief
                   </label>
                   <textarea
@@ -236,14 +237,14 @@ export default function Contact() {
                     rows={4}
                     required
                     placeholder="Tell us about your project, timeline, and key requirements..."
-                    className="bg-slate-50 dark:bg-[#111] border border-slate-200 dark:border-white/8 rounded-xl px-4 py-3 text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-[#333] focus:outline-none focus:border-orange-200 dark:focus:border-[#F97316]/50 transition-colors duration-200 resize-none"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#00ADEF]/50 transition-colors duration-200 resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="group flex items-center justify-center gap-2 w-full bg-[#F97316] hover:bg-[#EA6C0A] disabled:opacity-60 text-black font-bold text-base py-4 rounded-xl transition-all duration-200 cursor-pointer hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed"
+                  className="group flex items-center justify-center gap-2 w-full bg-[#00ADEF] hover:bg-[#1282C4] disabled:opacity-60 text-black font-bold text-base py-4 rounded-xl transition-all duration-200 cursor-pointer hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed"
                 >
                   {loading ? (
                     <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />

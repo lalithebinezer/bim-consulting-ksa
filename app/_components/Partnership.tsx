@@ -26,28 +26,38 @@ const PRODUCTS = [
 ];
 
 // Autodesk logo as inline SVG (simplified wordmark)
+// New Autodesk logo mark (Refined 2021 Brand Identity)
 function AutodeskLogo() {
   return (
     <svg
-      viewBox="0 0 240 60"
-      fill="none"
+      viewBox="0 0 250 50"
       xmlns="http://www.w3.org/2000/svg"
-      className="w-48 h-12"
+      className="w-48 h-10"
       aria-label="Autodesk logo"
     >
-      {/* A mark */}
-      <path d="M0 48L18 6h8l18 42h-10l-3.5-8.5H13.5L10 48H0zm16-16h12l-6-15-6 15z" fill="white" />
-      {/* UTODESK wordmark */}
+      <defs>
+        <linearGradient id="autodeskGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#FFFFFF" />
+          <stop offset="100%" stopColor="#FFFFFF" />
+        </linearGradient>
+      </defs>
+      {/* Symbol (The New Slanted A) */}
+      <path
+        d="M26.4 5.4H0.5L3.8 0H29.7L26.4 5.4ZM23.1 10.9L19.8 16.3H45.7L49 10.9H23.1ZM13.2 27.2L0.5 48.3L3.8 53.7L16.5 32.6L13.2 27.2ZM36.3 32.6H13.8L10.5 38.1H33L36.3 32.6Z"
+        fill="url(#autodeskGrad)"
+        fillOpacity="1"
+      />
+      {/* AUTODESK text simplified as vector if possible, or using text */}
       <text
-        x="50"
-        y="42"
-        fontFamily="Arial, sans-serif"
-        fontWeight="700"
-        fontSize="28"
+        x="55"
+        y="38"
+        fontFamily="Inter, sans-serif"
+        fontWeight="800"
+        fontSize="34"
         fill="white"
-        letterSpacing="1"
+        letterSpacing="-0.02em"
       >
-        UTODESK
+        AUTODESK
       </text>
     </svg>
   );
@@ -62,8 +72,8 @@ export default function Partnership() {
       <div className="absolute top-0 left-6 right-6 max-w-7xl mx-auto h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-1/4 w-[600px] h-[300px] bg-[#0066CC]/8 rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 left-1/4 w-[400px] h-[300px] bg-[#F97316]/6 rounded-full blur-[100px]" />
+        <div className="absolute top-0 right-1/4 w-[600px] h-[300px] bg-[#1282C4]/8 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 left-1/4 w-[400px] h-[300px] bg-[#00ADEF]/6 rounded-full blur-[100px]" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6" ref={ref}>
@@ -72,7 +82,7 @@ export default function Partnership() {
           initial={{ opacity: 0, x: -20 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="mono text-xs text-[#F97316] tracking-widest uppercase block mb-4"
+          className="mono text-xs text-[#00ADEF] tracking-widest uppercase block mb-4"
         >
           {"// 04 — Official Partnership"}
         </motion.span>
@@ -82,10 +92,10 @@ export default function Partnership() {
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="relative rounded-3xl overflow-hidden border border-slate-200 dark:border-white/8 bg-white dark:bg-[#0D0D0D] mb-8"
+          className="relative rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-2xl mb-8 shadow-2xl shadow-blue-900/20"
         >
           {/* Inner glow */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0066CC]/10 via-transparent to-[#F97316]/8 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1282C4]/10 via-transparent to-[#00ADEF]/8 pointer-events-none" />
 
           <div className="relative grid md:grid-cols-2 gap-0">
             {/* Left: Autodesk badge */}
@@ -97,30 +107,30 @@ export default function Partnership() {
                 className="flex flex-col items-center gap-6 text-center"
               >
                 {/* Autodesk logo */}
-                <div className="bg-[#0066CC] rounded-2xl px-8 py-5 shadow-lg shadow-blue-900/30">
+                <div className="bg-[#1282C4] rounded-2xl px-8 py-5 shadow-lg shadow-blue-900/30">
                   <AutodeskLogo />
                 </div>
 
                 <div>
-                  <div className="mono text-xs text-[#0099FF] tracking-widest uppercase mb-2">
+                  <div className="mono text-xs text-[#00ADEF] tracking-widest uppercase mb-2">
                     Silver Partner
                   </div>
-                  <h3 className="text-2xl font-black text-[#0F172A] dark:text-white mb-1">
+                  <h3 className="text-2xl font-black text-white mb-1">
                     Autodesk Silver Partner
                   </h3>
-                  <p className="text-slate-500 dark:text-[#64748B] text-sm">AEC Collection · GCC Region</p>
+                  <p className="text-slate-100 text-sm opacity-90">AEC Collection · GCC Region</p>
                 </div>
 
                 <div className="animated-border rounded-xl px-5 py-3 text-center">
-                  <p className="mono text-[10px] text-[#F97316] tracking-widest uppercase mb-1">Engineering on Demand</p>
-                  <p className="text-xs text-slate-500 dark:text-[#94A3B8]">Bridging Your Ideas to Reality</p>
+                  <p className="mono text-[10px] text-[#00ADEF] tracking-widest uppercase mb-1">Engineering on Demand</p>
+                  <p className="text-xs text-slate-100 opacity-80">Bridging Your Ideas to Reality</p>
                 </div>
               </motion.div>
             </div>
 
             {/* Right: Benefits */}
             <div className="p-10 md:p-12 flex flex-col justify-center">
-              <h3 className="text-2xl font-black text-[#0F172A] dark:text-white mb-6">
+              <h3 className="text-2xl font-black text-white mb-6">
                 What This Means<br />
                 <span className="text-gradient">For You</span>
               </h3>
@@ -132,9 +142,9 @@ export default function Partnership() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={inView ? { opacity: 1, x: 0 } : {}}
                     transition={{ delay: 0.3 + i * 0.06 }}
-                    className="flex items-start gap-3 text-sm text-slate-500 dark:text-[#94A3B8]"
+                    className="flex items-start gap-3 text-sm text-slate-100 opacity-90"
                   >
-                    <CheckCircle2 size={16} className="text-[#F97316] shrink-0 mt-0.5" />
+                    <CheckCircle2 size={16} className="text-[#00ADEF] shrink-0 mt-0.5" />
                     {benefit}
                   </motion.li>
                 ))}
@@ -148,12 +158,12 @@ export default function Partnership() {
                     initial={{ opacity: 0 }}
                     animate={inView ? { opacity: 1 } : {}}
                     transition={{ delay: 0.6 + i * 0.05 }}
-                    className="bg-slate-50 dark:bg-[#111] border border-slate-200 dark:border-white/6 rounded-lg p-3 text-center hover:border-blue-300 dark:hover:border-[#0066CC]/40 transition-colors duration-200 cursor-default"
+                    className="bg-slate-50 dark:bg-[#111] border border-slate-200 dark:border-white/6 rounded-lg p-3 text-center hover:border-[#1282C4]/40 dark:hover:border-[#1282C4]/40 transition-colors duration-200 cursor-default"
                   >
-                    <div className="font-bold text-xs text-[#0F172A] dark:text-white mb-0.5">
+                    <div className="font-bold text-xs text-white mb-0.5">
                       {p.name}
                     </div>
-                    <div className="mono text-[9px] text-slate-500 dark:text-[#475569]">{p.desc}</div>
+                    <div className="mono text-[9px] text-[#00ADEF] opacity-80">{p.desc}</div>
                   </motion.div>
                 ))}
               </div>

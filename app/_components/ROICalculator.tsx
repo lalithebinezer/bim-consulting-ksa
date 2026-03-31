@@ -42,16 +42,16 @@ export default function ROICalculator() {
   const roi = Math.round((totalSavings / (budget * 0.01)) * 100) / 100; // BIM costs ~1% of project
 
   const results = [
-    { label: "Clash Rework Savings", value: fmt(clashSavings), sub: `${clashesResolved} clashes resolved`, color: "#F97316", icon: AlertTriangle },
-    { label: "Man-Hours Saved", value: `${manHoursSaved.toLocaleString()} hrs`, sub: fmt(labourSavings) + " labour value", color: "#10B981", icon: Clock },
-    { label: "Design Error Reduction", value: fmt(designErrorSavings), sub: `35% fewer errors`, color: "#3B82F6", icon: TrendingDown },
+    { label: "Clash Rework Savings", value: fmt(clashSavings), sub: `${clashesResolved} clashes resolved`, color: "#00ADEF", icon: AlertTriangle },
+    { label: "Man-Hours Saved", value: `${manHoursSaved.toLocaleString()} hrs`, sub: fmt(labourSavings) + " labour value", color: "#1282C4", icon: Clock },
+    { label: "Design Error Reduction", value: fmt(designErrorSavings), sub: `35% fewer errors`, color: "#4A69BD", icon: TrendingDown },
   ];
 
   return (
     <section id="roi-calculator" className="py-32 relative">
       <div className="absolute top-0 left-6 right-6 max-w-7xl mx-auto h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] bg-[#F97316]/4 rounded-full blur-[150px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] bg-[#00ADEF]/4 rounded-full blur-[150px]" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6" ref={ref}>
@@ -59,7 +59,7 @@ export default function ROICalculator() {
           initial={{ opacity: 0, x: -20 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="font-mono text-xs text-[#F97316] tracking-widest uppercase block mb-4"
+          className="font-mono text-xs text-[#00ADEF] tracking-widest uppercase block mb-4"
         >
           {/* Free Tool — Instant Results */}
         </motion.span>
@@ -71,7 +71,7 @@ export default function ROICalculator() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-[clamp(2.5rem,5vw,5rem)] font-bold tracking-tighter leading-none text-[#0F172A] dark:text-white mb-4"
+              className="text-[clamp(2.5rem,5vw,5rem)] font-bold tracking-tighter leading-none text-white mb-4"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               BIM ROI
@@ -82,7 +82,7 @@ export default function ROICalculator() {
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ delay: 0.3 }}
-              className="text-slate-500 dark:text-[#64748B] text-lg leading-relaxed mb-10 max-w-md"
+              className="text-slate-100 text-lg leading-relaxed mb-10 max-w-md opacity-90"
             >
               Estimate how much your project saves with BIM — clash rework, man-hours, and design error costs. Adjust your project parameters below.
             </motion.p>
@@ -96,57 +96,57 @@ export default function ROICalculator() {
               {/* Area */}
               <div className="flex flex-col gap-2">
                 <div className="flex justify-between items-center">
-                  <label className="font-mono text-[11px] text-slate-500 dark:text-[#64748B] tracking-wider uppercase">Project Area</label>
-                  <span className="font-bold text-[#F97316] text-sm font-mono">{area.toLocaleString()} m²</span>
+                  <label className="font-mono text-[11px] text-slate-300 tracking-wider uppercase">Project Area</label>
+                  <span className="font-bold text-[#00ADEF] text-sm font-mono">{area.toLocaleString()} m²</span>
                 </div>
                 <input
                   type="range" min={500} max={100000} step={500} value={area}
                   onChange={e => setArea(Number(e.target.value))}
-                  className="w-full h-1.5 bg-slate-200 dark:bg-white/10 rounded-full appearance-none cursor-pointer accent-[#F97316]"
+                  className="w-full h-1.5 bg-slate-200 dark:bg-white/10 rounded-full appearance-none cursor-pointer accent-[#00ADEF]"
                 />
-                <div className="flex justify-between font-mono text-[9px] text-slate-500 dark:text-[#334155]"><span>500 m²</span><span>100,000 m²</span></div>
+                <div className="flex justify-between font-mono text-[9px] text-slate-100 opacity-60"><span>500 m²</span><span>100,000 m²</span></div>
               </div>
 
               {/* Budget */}
               <div className="flex flex-col gap-2">
                 <div className="flex justify-between items-center">
-                  <label className="font-mono text-[11px] text-slate-500 dark:text-[#64748B] tracking-wider uppercase">Project Budget</label>
-                  <span className="font-bold text-[#F97316] text-sm font-mono">{fmt(budget)}</span>
+                  <label className="font-mono text-[11px] text-slate-300 tracking-wider uppercase">Project Budget</label>
+                  <span className="font-bold text-[#00ADEF] text-sm font-mono">{fmt(budget)}</span>
                 </div>
                 <input
                   type="range" min={500000} max={100000000} step={500000} value={budget}
                   onChange={e => setBudget(Number(e.target.value))}
-                  className="w-full h-1.5 bg-slate-200 dark:bg-white/10 rounded-full appearance-none cursor-pointer accent-[#F97316]"
+                  className="w-full h-1.5 bg-slate-200 dark:bg-white/10 rounded-full appearance-none cursor-pointer accent-[#00ADEF]"
                 />
-                <div className="flex justify-between font-mono text-[9px] text-slate-500 dark:text-[#334155]"><span>$500K</span><span>$100M</span></div>
+                <div className="flex justify-between font-mono text-[9px] text-slate-400"><span>$500K</span><span>$100M</span></div>
               </div>
 
               {/* Disciplines */}
               <div className="flex flex-col gap-2">
                 <div className="flex justify-between items-center">
-                  <label className="font-mono text-[11px] text-slate-500 dark:text-[#64748B] tracking-wider uppercase">No. of Disciplines</label>
-                  <span className="font-bold text-[#F97316] text-sm font-mono">{disciplines}</span>
+                  <label className="font-mono text-[11px] text-slate-300 tracking-wider uppercase">No. of Disciplines</label>
+                  <span className="font-bold text-[#00ADEF] text-sm font-mono">{disciplines}</span>
                 </div>
                 <input
                   type="range" min={1} max={6} step={1} value={disciplines}
                   onChange={e => setDisciplines(Number(e.target.value))}
-                  className="w-full h-1.5 bg-slate-200 dark:bg-white/10 rounded-full appearance-none cursor-pointer accent-[#F97316]"
+                  className="w-full h-1.5 bg-slate-200 dark:bg-white/10 rounded-full appearance-none cursor-pointer accent-[#00ADEF]"
                 />
-                <div className="flex justify-between font-mono text-[9px] text-slate-500 dark:text-[#334155]"><span>1 (Arch)</span><span>6 (Full)</span></div>
+                <div className="flex justify-between font-mono text-[9px] text-slate-400"><span>1 (Arch)</span><span>6 (Full)</span></div>
               </div>
 
               {/* Duration */}
               <div className="flex flex-col gap-2">
                 <div className="flex justify-between items-center">
-                  <label className="font-mono text-[11px] text-slate-500 dark:text-[#64748B] tracking-wider uppercase">Project Duration</label>
-                  <span className="font-bold text-[#F97316] text-sm font-mono">{months} months</span>
+                  <label className="font-mono text-[11px] text-slate-300 tracking-wider uppercase">Project Duration</label>
+                  <span className="font-bold text-[#00ADEF] text-sm font-mono">{months} months</span>
                 </div>
                 <input
                   type="range" min={3} max={60} step={1} value={months}
                   onChange={e => setMonths(Number(e.target.value))}
-                  className="w-full h-1.5 bg-slate-200 dark:bg-white/10 rounded-full appearance-none cursor-pointer accent-[#F97316]"
+                  className="w-full h-1.5 bg-slate-200 dark:bg-white/10 rounded-full appearance-none cursor-pointer accent-[#00ADEF]"
                 />
-                <div className="flex justify-between font-mono text-[9px] text-slate-500 dark:text-[#334155]"><span>3 mo</span><span>60 mo</span></div>
+                <div className="flex justify-between font-mono text-[9px] text-slate-400"><span>3 mo</span><span>60 mo</span></div>
               </div>
             </motion.div>
           </div>
@@ -159,16 +159,16 @@ export default function ROICalculator() {
             className="flex flex-col gap-4"
           >
             {/* Total */}
-            <div className="bg-gradient-to-br from-[#F97316]/15 to-[#F97316]/5 border border-[#F97316]/30 rounded-2xl p-8 text-center">
-              <div className="font-mono text-xs text-[#F97316] tracking-widest uppercase mb-2">Estimated Total Savings</div>
+            <div className="bg-gradient-to-br from-[#00ADEF]/15 to-[#00ADEF]/5 backdrop-blur-2xl border border-[#00ADEF]/30 rounded-2xl p-8 text-center shadow-xl shadow-[#00ADEF]/10">
+              <div className="font-mono text-xs text-[#00ADEF] tracking-widest uppercase mb-2">Estimated Total Savings</div>
               <div
-                className="text-6xl font-black text-[#0F172A] dark:text-white mb-1"
+                className="text-6xl font-black text-white mb-1"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 {fmt(totalSavings)}
               </div>
-              <div className="text-sm text-slate-500 dark:text-[#64748B]">
-                <span className="text-[#10B981] font-bold">{roi}×</span> estimated ROI on BIM investment
+              <div className="text-sm text-slate-100 opacity-90">
+                <span className="text-[#00ADEF] font-bold">{roi}×</span> estimated ROI on BIM investment
               </div>
             </div>
 
@@ -190,10 +190,10 @@ export default function ROICalculator() {
                     <Icon size={16} strokeWidth={1.8} />
                   </div>
                   <div className="flex-1">
-                    <div className="text-xs text-slate-500 dark:text-[#64748B] mb-0.5">{r.label}</div>
+                    <div className="text-xs text-slate-100 opacity-90 mb-0.5">{r.label}</div>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-xl font-bold text-[#0F172A] dark:text-white">{r.value}</span>
-                      <span className="text-[10px] text-slate-500 dark:text-[#475569]">{r.sub}</span>
+                      <span className="text-xl font-bold text-white">{r.value}</span>
+                      <span className="text-[10px] text-slate-200 opacity-70">{r.sub}</span>
                     </div>
                   </div>
                 </motion.div>
@@ -205,7 +205,7 @@ export default function ROICalculator() {
               {sent ? (
                 <div className="text-center py-2">
                   <div className="text-[#10B981] font-bold text-sm mb-1">Report sent!</div>
-                  <p className="text-slate-500 dark:text-[#64748B] text-xs">Check your inbox for the full BIM ROI breakdown PDF.</p>
+                  <p className="text-slate-300 text-xs">Check your inbox for the full BIM ROI breakdown PDF.</p>
                 </div>
               ) : showEmail ? (
                 <div className="flex flex-col gap-3">
@@ -215,11 +215,11 @@ export default function ROICalculator() {
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     placeholder="you@company.com"
-                    className="bg-slate-50 dark:bg-[#111] border border-slate-200 dark:border-white/8 rounded-xl px-4 py-3 text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-[#333] focus:outline-none focus:border-orange-200 dark:focus:border-[#F97316]/50 transition-colors"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#00ADEF]/50 transition-colors"
                   />
                   <button
                     onClick={() => email && setSent(true)}
-                    className="group flex items-center justify-center gap-2 bg-[#F97316] hover:bg-[#EA6C0A] text-black font-bold text-sm py-3 rounded-xl transition-all duration-200"
+                    className="group flex items-center justify-center gap-2 bg-[#00ADEF] hover:bg-[#1282C4] text-black font-bold text-sm py-3 rounded-xl transition-all duration-200"
                   >
                     Send My Report
                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -228,7 +228,7 @@ export default function ROICalculator() {
               ) : (
                 <button
                   onClick={() => setShowEmail(true)}
-                  className="group w-full flex items-center justify-center gap-2 bg-[#F97316] hover:bg-[#EA6C0A] text-black font-bold text-sm py-3.5 rounded-xl transition-all duration-200 hover:scale-[1.02]"
+                  className="group w-full flex items-center justify-center gap-2 bg-[#00ADEF] hover:bg-[#1282C4] text-black font-bold text-sm py-3.5 rounded-xl transition-all duration-200 hover:scale-[1.02]"
                 >
                   <Calculator size={16} />
                   Get Full Detailed Report
@@ -237,7 +237,7 @@ export default function ROICalculator() {
               )}
             </div>
 
-            <p className="text-[10px] text-slate-500 dark:text-[#334155] text-center font-mono">
+            <p className="text-[10px] text-slate-400 text-center font-mono">
               Estimates based on industry benchmarks. Actual savings vary by project complexity.
             </p>
           </motion.div>
